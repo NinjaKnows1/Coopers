@@ -5,6 +5,13 @@ import ejs from 'ejs';
 
 const app = express();
 const PORT = process.env.PORT || 3000;  // Default port is 3000 if not set by Vercel
+
+// Set the views directory
+app.set('views', path.join(__dirname, 'views'));  // This will point to the views folder in your project
+
+// Set EJS as the templating engine
+app.set('view engine', 'ejs');
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
