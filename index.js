@@ -2,15 +2,21 @@ import express from "express";
 import bodyParser from "body-parser";
 import path from "path";
 import ejs from 'ejs';
+import { fileURLToPath } from "url";
 
 const app = express();
 const PORT = process.env.PORT || 3000;  // Default port is 3000 if not set by Vercel
 
-// Set the views directory
-app.set('views', path.join(__dirname, 'views'));  // This will point to the views folder in your project
+// Get the current directory in ES6 modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-// Set EJS as the templating engine
-app.set('view engine', 'ejs');
+
+// Use __dirname to ensure the correct path to your 'public' directory
+const indexPage = path.resolve(__dirname, "public", "index.ejs");
+const gamePage = path.resolve(__dirname, "public", "simon-game.ejs");
+const aboutPage = path.resolve(__dirname, "public", "about.ejs");
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -18,12 +24,12 @@ app.use(express.static('public'));
 
 app.get('/', function (req, res) {
     console.log('Home page accessed');
-    res.render("index");
+    res.render(indexPage);
   });
   
   // Route for the Simon Game page
 app.get('/simon-game', function (req, res) {
-  res.render("simon-game"); // Serve the Simon Game page (create this page in your views folder)
+  res.render(gamePage); // Serve the Simon Game page (create this page in your views folder)
 });
 
 
@@ -40,7 +46,7 @@ wishesList.push({
 
 // Route for the About page
 app.get('/about', function (req, res) {
-  res.render("about",  { wishes: wishesList }); // Serve the About page (create this page in your views folder)
+  res.render(aboutPage,  { wishes: wishesList }); // Serve the About page (create this page in your views folder)
 });
 
 
@@ -58,7 +64,7 @@ app.post('/about/make-wish', (req, res) => {
   wishesList.push(newWish);
   console.log(newWish);
   // Respond by rendering the 'about' page with the updated list of wishes
-  res.render("about", { wishes: wishesList });
+  res.render(aboutPage, { wishes: wishesList });
 
 });
 
@@ -76,10 +82,10 @@ app.post('/about/delete-wish', (req, res) => {
   }
 
   // After deletion, render the 'about' page with the updated list of wishes
-  res.render('about', { wishes: wishesList });
+  res.render(aboutPage, { wishes: wishesList });
 });
 
 
-app.listen("https://coopers-beta.vercel.app/", () => {
-   console.log(`Server is running on port ${PORT}`);
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 })
