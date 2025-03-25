@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import path from "path";
-
+import ejs from 'ejs';
 
 const app = express();
 const PORT = process.env.PORT || 3000;  // Default port is 3000 if not set by Vercel
