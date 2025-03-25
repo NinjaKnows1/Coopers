@@ -4,6 +4,7 @@ import path from "path";
 
 
 const app = express();
+const PORT = process.env.PORT || 3000;  // Default port is 3000 if not set by Vercel
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
@@ -72,6 +73,6 @@ app.post('/about/delete-wish', (req, res) => {
 });
 
 
-app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000');
+app.listen(PORT, () => {
+   console.log(`Server is running on port ${PORT}`);
 })
