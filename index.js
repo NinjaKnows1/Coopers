@@ -73,6 +73,6 @@ app.post('/about/delete-wish', (req, res) => {
 });
 
 
-app.listen(PORT, () => {
+app.listen("https://coopers-beta.vercel.app/", () => {
    console.log(`Server is running on port ${PORT}`);
 })
