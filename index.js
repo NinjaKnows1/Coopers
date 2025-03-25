@@ -18,12 +18,12 @@ app.use(express.static('public'));
 
 app.get('/', function (req, res) {
     console.log('Home page accessed');
-    res.render("index.ejs");
+    res.render("index");
   });
   
   // Route for the Simon Game page
 app.get('/simon-game', function (req, res) {
-  res.render("simon-game.ejs"); // Serve the Simon Game page (create this page in your views folder)
+  res.render("simon-game"); // Serve the Simon Game page (create this page in your views folder)
 });
 
 
@@ -40,7 +40,7 @@ wishesList.push({
 
 // Route for the About page
 app.get('/about', function (req, res) {
-  res.render("about.ejs",  { wishes: wishesList }); // Serve the About page (create this page in your views folder)
+  res.render("about",  { wishes: wishesList }); // Serve the About page (create this page in your views folder)
 });
 
 
@@ -58,7 +58,7 @@ app.post('/about/make-wish', (req, res) => {
   wishesList.push(newWish);
   console.log(newWish);
   // Respond by rendering the 'about' page with the updated list of wishes
-  res.render("about.ejs", { wishes: wishesList });
+  res.render("about", { wishes: wishesList });
 
 });
 
@@ -76,7 +76,7 @@ app.post('/about/delete-wish', (req, res) => {
   }
 
   // After deletion, render the 'about' page with the updated list of wishes
-  res.render('about.ejs', { wishes: wishesList });
+  res.render('about', { wishes: wishesList });
 });
 
 
