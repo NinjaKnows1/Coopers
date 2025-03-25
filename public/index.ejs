@@ -64,7 +64,18 @@
     <!-- Include your JavaScript file -->
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="video.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const video = document.getElementById('birthday-video');
+        const card = document.getElementById('birthday-card');
+    
+        // When the video ends, show the card
+        video.addEventListener('ended', function() {
+            card.style.display = 'block';
+        });
+    });
+
+    </script>
 
 
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
