@@ -19,7 +19,8 @@ const aboutPage = path.resolve(__dirname, "public", "about.ejs");
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
+// Serve static files from 'public' folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/', function (req, res) {
