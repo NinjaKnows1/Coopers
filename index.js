@@ -45,6 +45,20 @@ wishesList.push({
   date: new Date().toLocaleDateString()  // Automatically adds the current date
 });
 
+wishesList.push({
+  wish: "I want to go on Catalina island adventure with Chloe Zhang",
+  reason: "I love exploring, especially with my favorite person! I want to spend a fan day experiencing life together flying through the air on a zip line!",
+  name: "Emma Cooper",  // You can use any name here
+  date: "3/26/2025"
+});
+
+wishesList.push({
+  wish: "Apple Watch wristband",
+  reason: "My wrist band is falling apart. If I don’t get a new one soon it may not survive much longer",
+  name: "Josh",  // You can use any name here
+  date: "3/26/2025"
+});
+
 // Route for the About page
 app.get('/about', function (req, res) {
   res.render(aboutPage,  { wishes: wishesList }); // Serve the About page (create this page in your views folder)
